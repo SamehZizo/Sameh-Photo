@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Photo</string>
+
+    <!--Camera Permission-->
+    <string name="camera_permission_denied">Camera Permission Denied !</string>
+
+</resources>
