@@ -18,8 +18,8 @@ import static android.app.Activity.RESULT_OK;
 public class Camera {
 
     private Activity activity;
-    private final int TAKE_PHOTO_PERMISSION = 100;
-    private final int TAKE_PHOTO = 150;
+    private final int TAKE_PHOTO_PERMISSION = 1000;
+    private final int TAKE_PHOTO = 1500;
     private Uri imageUri;
 
     public Camera(Activity activity) {

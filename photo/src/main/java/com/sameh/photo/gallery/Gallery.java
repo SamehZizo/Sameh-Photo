@@ -13,7 +13,7 @@ import static android.app.Activity.RESULT_OK;
 public class Gallery {
 
     private Activity activity;
-    private final int CHOOSE_PHOTO = 150;
+    private final int CHOOSE_PHOTO = 2500;
     private Uri imageUri;
 
     public Gallery(Activity activity) {
