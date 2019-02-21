@@ -25,6 +25,13 @@ public class Gallery {
         activity.startActivityForResult(intent,CHOOSE_PHOTO);
     }
 
+    public void chooseImageV2(String title){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        activity.startActivityForResult(Intent.createChooser(intent, title), CHOOSE_PHOTO);
+    }
+
     public void onActivityGalleryResult(int requestCode, int resultCode, Intent data , Completed completed){
         if (requestCode == CHOOSE_PHOTO && resultCode == RESULT_OK && data != null){
             imageUri = data.getData();
