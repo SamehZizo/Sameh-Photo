@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
@@ -21,12 +22,18 @@ public class Camera {
     private final int TAKE_PHOTO_PERMISSION = 1000;
     private final int TAKE_PHOTO = 1500;
     private Uri imageUri;
+    private Intent data;
 
     public Camera(Activity activity) {
         this.activity = activity;
     }
 
     public void takePhoto(){
+        checkPermission(activity,TAKE_PHOTO_PERMISSION);
+    }
+
+    public void takePhoto(Intent data){
+        this.data = data;
         checkPermission(activity,TAKE_PHOTO_PERMISSION);
     }
 
@@ -85,7 +92,7 @@ public class Camera {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(
                         activity.getContentResolver(), imageUri);
-                complete.onCompleted(bitmap,imageUri);
+                complete.onCompleted(bitmap,imageUri, this.data);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -93,6 +100,6 @@ public class Camera {
     }
 
     public interface Completed {
-        void onCompleted(Bitmap bitmap , Uri imageUri);
+        void onCompleted(Bitmap bitmap , Uri imageUri, @Nullable Intent data);
     }
 }
